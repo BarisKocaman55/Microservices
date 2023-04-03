@@ -3,6 +3,7 @@ using FreeCourse.Services.Catalog.Dtos;
 using FreeCourse.Services.Catalog.Model;
 using FreeCourse.Services.Catalog.Settings;
 using FreeCourse.Shared.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -29,8 +30,10 @@ namespace FreeCourse.Services.Catalog.Services
             return ResponseDto<List<CategoryDto>>.Success(_mapper.Map<List<CategoryDto>>(categories), 200);
         }
 
-        public async Task<ResponseDto<CategoryDto>> CreateAsync(Category category)
+
+        public async Task<ResponseDto<CategoryDto>> CreateAsync(CategoryDto categoryDto)
         {
+            var category = _mapper.Map<Category>(categoryDto);
             await _categoryCollection.InsertOneAsync(category);
             return ResponseDto<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
         }
