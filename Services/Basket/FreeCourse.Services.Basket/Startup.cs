@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,10 +47,11 @@ namespace FreeCourse.Services.Basket
             services.AddScoped<IBasketService, BasketService>();
 
             var requiereAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.Authority = Configuration["IdentityServiceURL"];
-                options.Audience = "";
+                options.Audience = "resource_basket";
                 options.RequireHttpsMetadata = false;
             });
 
