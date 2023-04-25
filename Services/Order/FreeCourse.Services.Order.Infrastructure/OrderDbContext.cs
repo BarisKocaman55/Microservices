@@ -31,5 +31,6 @@ namespace FreeCourse.Services.Order.Infrastructure
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

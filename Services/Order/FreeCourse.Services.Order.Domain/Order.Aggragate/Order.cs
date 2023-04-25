@@ -20,7 +20,7 @@ namespace FreeCourse.Services.Order.Domain.Order.Aggragate
         public Address Address { get; private set; }
         public string BuyerId { get; private set; }
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
-        public Order(Address address, string buyerId)
+        public Order(string buyerId, Address address)
         {
             Address = address;
             BuyerId = buyerId;
