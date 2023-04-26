@@ -22,7 +22,7 @@ namespace FreeCourse.Services.Order.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Domain.Order.Aggragate.Order>().ToTable("Orders", DEFAULT_SCHEMA);
-            modelBuilder.Entity<Domain.Order.Aggragate.OrderItem>().ToTable("Orders", DEFAULT_SCHEMA);
+            modelBuilder.Entity<Domain.Order.Aggragate.OrderItem>().ToTable("OrderItems", DEFAULT_SCHEMA);
 
             modelBuilder.Entity<Domain.Order.Aggragate.OrderItem>().Property(i => i.Price).HasColumnType("decimal(18, 2)");
 

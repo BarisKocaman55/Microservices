@@ -20,6 +20,13 @@ namespace FreeCourse.Services.Order.Domain.Order.Aggragate
         public Address Address { get; private set; }
         public string BuyerId { get; private set; }
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
+        
+        // Lazy loading yapılmak istendiğinde entity üzerinde bir default constructer olmalıdır.
+        public Order()
+        {
+
+        }
+
         public Order(string buyerId, Address address)
         {
             Address = address;

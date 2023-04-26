@@ -6,13 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Order.Domain.Order.Aggragate
-{ 
+{
+    // --Shadow Property => kodda olmamasına rağmen OrderId adında bir column bire-çok ilişki kurmak için db tarafında oluşturulacak
     public class OrderItem : Entity
     {
         public string ProductId { get; private set; }
         public string ProductName { get; private set; }
         public string PictureUrl { get; private set; }
         public Decimal Price { get; private set; }
+
+        public OrderItem()
+        {
+
+        }
 
         public OrderItem(string productId, string productName, string pictureUrl, decimal price)
         {
